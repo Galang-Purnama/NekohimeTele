@@ -9,7 +9,7 @@ export default {
         let img = await axios.get('https://api.waifu.pics/sfw/waifu');
         conn.sendUrlButtonImg(m.chat, img.data.url, 'Sukses', [['Instagram', 'https://instagram.com/galangpurnama.my.id'], ['☰ LAGI', callbackData], ['☰ MENU', '/menu']], m.repl);
         // Wajib di add ketika ingin membuat gambar baru
-        conn.action(callbackData, async (ctx) => {
+        conn.action(callbackData, async () => {
             img = await axios.get('https://api.waifu.pics/sfw/waifu');
             conn.sendUrlButtonImg(m.chat, img.data.url, 'Sukses', [['Lagi', callbackData]], m.repl);
         });
