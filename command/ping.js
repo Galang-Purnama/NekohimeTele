@@ -6,7 +6,7 @@ export default {
     name: 'ping',
     cmd: ['ping'],
     tags: 'info',
-    run: async ({ conn, m, prefix, command, commands }) => {
+    run: async ({ conn, m, prefix, command }) => {
         let format = sizeFormatter({
             std: 'JEDEC', // 'SI' (default) | 'IEC' | 'JEDEC'
             decimalPlaces: 2,
@@ -62,6 +62,6 @@ ${cpus[0] ? `❏ Total CPU Usage
 ${cpus[0].model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- ${(type + '').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}
 
 ❏ CPU Core(s) Usage (${cpus.length} Core CPU)
-${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- ${(type + '').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}`).join('\n\n')}` : ''}`, [['☰ MENU', '/menu']], m.repl)
+${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- ${(type + '').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}`).join('\n\n')}` : ''}`, [[set.menuBtn, '/menu']], m.repl)
     },
 };

@@ -2,7 +2,7 @@ export default {
     name: 'info',
     cmd: ['info'],
     tags: 'info',
-    run: async ({ conn, m, prefix, command, commands }) => {
+    run: async ({ conn, m, prefix, command }) => {
         conn.sendMessage(m.chat, `Info Bot ${conn.botInfo.username}
 
 - Bot Name : ${conn.botInfo.username}

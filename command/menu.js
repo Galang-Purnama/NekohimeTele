@@ -20,7 +20,7 @@ export default {
   cmd: ['menu'],
   tags: 'main',
   desc: 'To display the menu by list, and see how to use the menu',
-  run: async ({ conn, m, prefix, command, commands }) => {
+  run: async ({ conn, m, prefix, command }) => {
     try {
       const commandFolder = join(__dirname);
       const commandFiles = readdirSync(commandFolder).filter(file => file.endsWith('.js'));
@@ -53,7 +53,7 @@ export default {
         menuText += `⦿ ${tag}\n${commands.join('\n')}\n\n`;
       });
 
-      conn.sendButtonUrl(m.chat, menuText, [['Instagram', 'https://instagram.com/galangpurnama.my.id'], ['Test Example', 'https://example.com'], ['☰ INFO', '/info'], ['☰ MENU', '/menu']], m.repl);
+      conn.sendButtonUrl(m.chat, menuText, [['Instagram', 'https://instagram.com/galangpurnama.my.id'], [set.infoBtn, '/info'], [set.menuBtn, '/menu']], m.repl);
 
     } catch (error) {
       console.error('Error displaying menu:', error);

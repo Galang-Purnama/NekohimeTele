@@ -2,7 +2,7 @@ export default {
     name: 'faq',
     cmd: ['faq'],
     tags: 'main',
-    run: async ({ conn, m, prefix, command, commands }) => {
+    run: async ({ conn, m, prefix, command }) => {
         conn.sendMessage(m.chat, `FAQ Penggunaan Bot Telegram untuk Download (Maksimum 50MB)
 
 1. Bagaimana cara menggunakan bot Telegram untuk download?
