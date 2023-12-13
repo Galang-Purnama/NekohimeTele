@@ -3,5 +3,5 @@ global.set = {
     infoBtn: '☰ INFO',
     pingBtn: '☰ PING',
     faktaBtn: '☰ FAKTA',
-    apikey: 'apikeymu' // Silahkan registrasi di https://nekohime.xyz/signup
+    apikey: 'nekohimeBotID' // Silahkan registrasi di https://nekohime.xyz/signup
 }

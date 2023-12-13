@@ -3,7 +3,7 @@ export default {
     cmd: ['info'],
     tags: 'info',
     run: async ({ conn, m, prefix, command }) => {
-        conn.sendMessage(m.chat, `Info Bot ${conn.botInfo.username}
+        conn.keyboard(m.chat, `Info Bot ${conn.botInfo.username}
 
 - Bot Name : ${conn.botInfo.username}
 - First Name : ${conn.botInfo.first_name}
@@ -18,6 +18,6 @@ About Bot :
 Note :
 Jika ada bug silahkan report ke owner @GalangP_Dev
 
-Semoga Bermanfaat ya🤗`, m.repl)
+Semoga Bermanfaat ya🤗`, [[set.pingBtn, '/ping'], [set.menuBtn, '/menu'], ['Hapus Keyboard', '/delkeyboard']], m.repl)
     }
 };
