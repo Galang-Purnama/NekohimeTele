@@ -1,6 +1,5 @@
 // main.js
 import './handler.js'
-import { API, } from './lib/helper.js';
 import { conn, serialize } from './lib/simple.js';
 import { readdirSync } from 'fs';
 import path, { join, dirname } from 'path';

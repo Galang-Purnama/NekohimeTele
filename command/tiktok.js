@@ -5,8 +5,7 @@ export default {
     tags: 'downloader',
     run: async ({ conn, m, prefix, text, command }) => {
         if (!text) return m.reply('Url nya mana ?')
-        let vid = await API('https://nekohime.xyz/api/dowloader/tiktok', {url: text, apikey: set.apikey})
-
+        let vid = await API('https://nekohime.xyz/api/downloader/tiktok', {url: text, apikey: set.apikey})
         if (vid.result.type === 'video') {
           const videoUrl = vid.result.video[0];
           conn.sendVideo(m.chat, videoUrl, 'Sukses', m.repl);
