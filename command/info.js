@@ -18,6 +18,6 @@ About Bot :
 Note :
 Jika ada bug silahkan report ke owner @GalangP_Dev
 
-Semoga Bermanfaat ya🤗`, [[set.pingBtn, '/ping'], [set.menuBtn, '/menu'], ['Hapus Keyboard', '/delkeyboard']], m.repl)
+Semoga Bermanfaat ya🤗`, [[set.pingBtn, '/ping'], [set.menuBtn, '/menu'], ['Hapus Keyboard', '/delkeyboard']], m.send)
     }
 };

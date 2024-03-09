@@ -3,7 +3,7 @@ export default {
     cmd: ['fakta'],
     tags: 'quotes',
     run: async ({ conn, m, prefix, command }) => {
-  conn.sendButton(m.chat, `乂 F A K T A 乂 \n\n${await conn.pickRandom(faktaa)}`, [[set.faktaBtn, '/fakta']], m.repl)
+  conn.sendButton(m.chat, `乂 F A K T A 乂 \n\n${await conn.pickRandom(faktaa)}`, [[set.faktaBtn, '/fakta']], m.send)
     },
 };
 

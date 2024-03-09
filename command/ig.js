@@ -11,7 +11,7 @@ export default {
       const dataArray = result.data;
       for (const data of dataArray) {
         const downloadUrl = data.url;
-        await conn.sendFile(m.chat, downloadUrl, 'Sukses', m);
+        await conn.sendFile(m.chat, downloadUrl, 'Sukses', m.send);
       }
         }
     },

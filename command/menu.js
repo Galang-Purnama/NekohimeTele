@@ -53,7 +53,7 @@ export default {
         menuText += `⦿ ${tag}\n${commands.join('\n')}\n\n`;
       });
 
-      conn.sendButtonUrl(m.chat, menuText, [['Instagram', 'https://instagram.com/galangpurnama.my.id'], [set.infoBtn, '/info'], [set.menuBtn, '/menu']], m.repl);
+      conn.sendButtonUrl(m.chat, menuText, [['Instagram', 'https://instagram.com/galangpurnama.my.id'], [set.infoBtn, '/info'], [set.menuBtn, '/menu']], m.send);
 
     } catch (error) {
       console.error('Error displaying menu:', error);

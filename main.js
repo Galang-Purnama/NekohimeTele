@@ -9,8 +9,7 @@ import chalk from 'chalk';
 import axios from 'axios';
 import lodash from 'lodash'
 import fs from 'fs'
-import { dbUser, dbChat } from './handler.js'
-// Fungsi untuk membaca berkas-berkas di dalam folder command
+import { handler, PermissionChecker  } from './handler.js'
 async function loadCommands() {
   const __dirname = dirname(fileURLToPath(import.meta.url));
   const commandFiles = readdirSync(join(__dirname, 'command')).filter((file) => file.endsWith('.js'));
@@ -37,38 +36,35 @@ async function loadCommands() {
     }
   }
 
-  // DATABASE
-  var low;
+    // DATABASE
+    var low;
   try {
-    low = await import('lowdb');
-  } catch (e) {
-    low = await import('./lib/lowdb.js');
-  }
-  const { LowSync, JSONFileSync } = low;
-  if (!fs.existsSync('./database.json')) {
-    fs.writeFileSync('./database.json', '{}');
-  }
-  const adapter = new JSONFileSync('./database.json'); 
-  global.db = new LowSync(adapter); 
-  global.DATABASE = global.db;
-  global.loadDatabase = async function loadDatabase() {
-    if (global.db.READ) return new Promise((resolve) => setInterval(function () { (!global.db.READ ? (clearInterval(this), resolve(global.db.data == null ? global.loadDatabase() : global.db.data)) : null) }, 1 * 1000));
-    if (!global.db.data) {
-      global.db.data = {
-        users: {},
-        chats: {},
-        settings: {},
-        stats: {}
-      };
-      await global.db.write();
-    } else {
-      global.db.READ = true;
-      await global.db.read();
-      global.db.READ = false;
+      low = await import('lowdb');
+      } catch (e) {
+      low = await import('./lib/lowdb.js');
     }
-    global.db.chain = lodash.chain(global.db.data);
-  };
-  loadDatabase();
+  const { LowSync, JSONFileSync } = low;
+    if (!fs.existsSync('./database.json')) {
+      fs.writeFileSync('./database.json', '{}');
+    }
+  const adapter = new JSONFileSync('./database.json'); 
+    global.db = new LowSync(adapter); 
+      global.loadDatabase = async function loadDatabase() {
+        if (global.db.READ) return new Promise((resolve) => setInterval(function () { (!global.db.READ ? (clearInterval(this), resolve(global.db.data == null ? global.loadDatabase() : global.db.data)) : null) }, 1 * 1000))
+        if (global.db.data !== null) return
+          global.db.READ = true
+            await global.db.read()
+              global.db.READ = false
+            global.db.data = {
+          users: {},
+        chats: {},
+      settings: {},
+    stats: {},
+    ...(global.db.data || {})
+    }
+    global.db.chain = lodash.chain(global.db.data)
+  }
+  loadDatabase()
 
   if (global.db) setInterval(async () => {
     if (global.db.data) await global.db.write();
@@ -78,10 +74,16 @@ async function loadCommands() {
     if (command && command.cmd && command.run) {
       conn.command(command.cmd, async (ctx) => {
         await global.loadDatabase();
-        const userId = ctx.from.id.toString();
-        const chatId = ctx.from.id.toString();
-        dbUser(userId)
-        dbChat(chatId)
+        handler(ctx)
+         const permissionChecker = new PermissionChecker(ctx.from.id.toString());
+         if (command.isOwner && !permissionChecker.isOwner()) {
+             await ctx.reply('Maaf, fitur ini hanya untuk pemilik bot.');
+             return;
+         }
+         if (command.premium && !permissionChecker.premium()) {
+             await ctx.reply('Maaf, fitur ini hanya untuk pengguna premium.');
+             return;
+         }
         const serializedContext = serialize(ctx, conn);
         const [cmd, ...args] = ctx.message.text.split(/\s+/);
         const textAfterCommand = args.join(' ');

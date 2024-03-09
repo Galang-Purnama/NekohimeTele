@@ -9,7 +9,7 @@ const roti = 5
 const apel = 10
 const potion = 5
 const coin = 500
-const saldo = 250
+const saldoATM = 250
   let __timers = new Date() - user.lastclaim;
   let _timers = 86400000 - __timers;
   let timers = clockString(_timers);
@@ -20,13 +20,13 @@ const saldo = 250
 🪙 Coin: ${coin}
 🍎 Apel: ${apel}
 🧪Potion: ${potion}
-💳 Saldo: ${saldo}`, [[set.infoBtn, '/info'], [set.menuBtn, '/menu']], m.repl);
+💳 Saldo: ${saldoATM}`, [[set.infoBtn, '/info'], [set.menuBtn, '/menu']], m.send);
     global.db.data.users[m.sender].money += uang * 1;
     global.db.data.users[m.sender].potion += potion * 1;
     global.db.data.users[m.sender].apel += apel * 1;
     global.db.data.users[m.sender].roti += roti * 1;
     global.db.data.users[m.sender].coin += coin * 1;
-    global.db.data.users[m.sender].saldo += saldo * 1;
+    global.db.data.users[m.sender].saldoATM += saldoATM * 1;
     global.db.data.users[m.sender].lastclaim = new Date() * 1;
   } else m.reply(`Anda harus menunggu *${timers}* lagi untuk mengklaim.`);
     },

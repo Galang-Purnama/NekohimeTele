@@ -20,6 +20,6 @@ Bot ini menyediakan opsi untuk melihat ukuran file sebelum mengonfirmasi pengund
 Jika file melebihi batasan, pertimbangkan untuk mengompres file atau membaginya menjadi bagian yang lebih kecil sebelum menggunakan bot.
 
 5. Apakah ada cara untuk meningkatkan kecepatan pengunduhan?
-Kecepatan pengunduhan tergantung pada beberapa faktor, termasuk server bot dan koneksi pengguna. Pastikan koneksi internet Anda stabil untuk hasil terbaik.`, m.repl)
+Kecepatan pengunduhan tergantung pada beberapa faktor, termasuk server bot dan koneksi pengguna. Pastikan koneksi internet Anda stabil untuk hasil terbaik.`, m.send)
     }
 };
