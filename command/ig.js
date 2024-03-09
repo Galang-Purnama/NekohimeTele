@@ -1,7 +1,7 @@
 import axios from "axios";
 export default {
     name: 'instagram',
-    cmd: ['instagram', 'ig', 'igdl'],
+    cmd: ['ig'],
     tags: 'downloader',
     run: async ({ conn, m, prefix, text, command }) => {
         if (!text) return m.reply('Url nya mana ?')

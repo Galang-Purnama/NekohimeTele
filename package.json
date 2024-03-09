@@ -25,6 +25,8 @@
     "fs": "^0.0.1-security",
     "gradient-string": "^2.0.2",
     "human-readable": "^0.2.1",
+    "lodash": "^4.17.21",
+    "lowdb": "^3.0.0",
     "moment": "^2.29.4",
     "node-fetch": "^3.3.2",
     "perf_hooks": "^0.0.1",
